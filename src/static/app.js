@@ -22,7 +22,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Create participants list HTML
         const participantsList = details.participants.length > 0 
-          ? details.participants.map(p => `<li><span class="participant-name">${p}</span><button class="delete-btn" data-activity="${name}" data-email="${p}" title="Unregister">×</button></li>`).join('')
+          ? details.participants.map(p => {
+              const participant = document.createElement("li");
+              const label = document.createElement("span");
+              label.className = "participant-name";
+              label.textContent = p;
+              const button = document.createElement("button");
+              button.className = "delete-btn";
+              button.dataset.activity = name;
+              button.dataset.email = p;
+              button.title = "Unregister";
+              button.textContent = "×";
+              participant.append(label, button);
+              return participant.outerHTML;
+            }).join('')
           : '<li class="no-participants">No participants yet</li>';
 
         activityCard.innerHTML = `
