@@ -108,7 +108,7 @@ section h3 {
 
 .participants-list li.no-participants {
   font-style: italic;
-  color: #999;
+  color: #666;
   justify-content: flex-start;
 }
 
